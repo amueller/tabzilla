@@ -183,6 +183,14 @@ def TabPFNModel():
     return model
 
 
+@register_model
+def MotherNet():
+    from models.mothernet import MotherNet as model
+
+    return model
+
+
+
 ##############################################################
 # rtdl models (also using torch)
 # code: https://yura52.github.io
