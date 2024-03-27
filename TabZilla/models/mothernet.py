@@ -5,13 +5,16 @@ from mothernet.prediction import MotherNetClassifier, EnsembleMeta
 class MotherNet(BaseModel):
     def __init__(self, params, args):
         super().__init__(params, args)
-
+        if args.use_gpu:
+            device = f"cuda:{args.gpus[0]}"
+        else:
+            device = "cpu"
         if args.objective == "regression":
             raise NotImplementedError("Does not support")
         elif args.objective == "classification":
-            self.model = EnsembleMeta(MotherNetClassifier(device='cpu'), n_estimators=3)
+            self.model = EnsembleMeta(MotherNetClassifier(device=device), n_estimators=3)
         elif args.objective == "binary":
-            self.model = EnsembleMeta(MotherNetClassifier(device='cpu'), n_estimators=3)
+            self.model = EnsembleMeta(MotherNetClassifier(device=device), n_estimators=3)
 
     def fit(self, X, y, X_val=None, y_val=None):
         self.model.fit(X, y)
