@@ -15,10 +15,7 @@ model=mothernet
 experiment_name=$name
 
 # config file
-config_file=/home/shared/tabzilla/TabZilla/tabzilla_experiment_config_mothernet_gpu.yml
-
-# results file: check for results here before launching each experiment
-result_log=/home/shared/tabzilla/TabZilla/result_log_mothernet.txt
+config_file=../../TabZilla/tabzilla_experiment_config_mothernet_gpu.yml
 
 # end: EXPERIMENT PARAMETERS
 ############################
