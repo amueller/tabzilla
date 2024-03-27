@@ -15,7 +15,7 @@ model=mothernet
 experiment_name=$name
 
 # config file
-config_file=../../TabZilla/tabzilla_experiment_config_mothernet_gpu.yml
+config_file=../../TabZilla/tabzilla_experiment_config_mothernet_gpu_subset.yml
 
 # end: EXPERIMENT PARAMETERS
 ############################
