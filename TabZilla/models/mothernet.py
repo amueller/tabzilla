@@ -7,7 +7,7 @@ class MotherNet(BaseModel):
     def __init__(self, params, args):
         super().__init__(params, args)
         if args.use_gpu:
-            device = f"cuda:{args.gpus[0]}"
+            device = f"cuda:{args.gpu_ids[0]}"
         else:
             device = "cpu"
             torch.set_num_threads(4)
