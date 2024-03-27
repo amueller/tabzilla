@@ -42,7 +42,7 @@ do
   echo "DATASET: ${DATASETS[j]}"
   echo "EXPERIMENT_NAME: ${experiment_name}"
   #echo "tabzilla_experiment.py --experiment_config ${config_file} --dataset_dir datasets/${DATASETS[j]} --model_name MotherNet "
-  python ../../TabZilla/tabzilla_experiment.py --experiment_config ${config_file} --dataset_dir ../../TabZilla/datasets/${DATASETS[j]} --model_name MotherNet1000
+  python ../../TabZilla/tabzilla_experiment.py --experiment_config ${config_file} --dataset_dir ../../TabZilla/datasets/${DATASETS[j]} --model_name MotherNet
   mv results/default_trial0_results.json results/results_${DATASETS[j]}_mothernet.json
 
   # >> ${LOG_DIR}/log_${i}_${j}_$(date +"%m%d%y_%H%M%S").txt 2>&1 &                                                                                                   
