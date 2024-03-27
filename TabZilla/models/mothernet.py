@@ -1,5 +1,6 @@
 from models.basemodel import BaseModel
 from mothernet.prediction import MotherNetClassifier, EnsembleMeta
+import torch
 
 
 class MotherNet(BaseModel):
@@ -9,6 +10,7 @@ class MotherNet(BaseModel):
             device = f"cuda:{args.gpus[0]}"
         else:
             device = "cpu"
+            torch.set_num_threads(4)
         if args.objective == "regression":
             raise NotImplementedError("Does not support")
         elif args.objective == "classification":
