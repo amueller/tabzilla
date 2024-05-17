@@ -136,3 +136,4 @@ dmypy.json
 
 # codebase specific 
 TabZilla/models/hopular/auxiliary/resources/*
+scripts/experiments/results
