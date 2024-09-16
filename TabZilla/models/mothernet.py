@@ -3,6 +3,7 @@ from mothernet.prediction import MotherNetClassifier, EnsembleMeta
 from mothernet.utils import get_mn_model
 
 import torch
+from sklearn.datasets import load_iris
 
 
 class MotherNet(BaseModel):
@@ -11,6 +12,7 @@ class MotherNet(BaseModel):
         if args.use_gpu:
             device = f"cuda:{args.gpu_ids[0]}"
             n_jobs = 1
+            torch.set_num_threads(1)
         else:
             device = "cpu"
             torch.set_num_threads(4)
@@ -22,6 +24,9 @@ class MotherNet(BaseModel):
             model_string = "mn_Dclass_average_03_25_2024_17_14_32_epoch_2910.cpkt"
             model_path = get_mn_model(model_string)
             self.model = EnsembleMeta(MotherNetClassifier(device=device, inference_device=device, path=model_path), n_estimators=8, n_jobs=n_jobs, onehot=True)
+            # the silliest way possible to populate the model cache before starting the timing.
+            iris = load_iris()
+            self.model.fit(iris.data, iris.target)
 
     def fit(self, X, y, X_val=None, y_val=None):
         self.model.fit(X, y)
