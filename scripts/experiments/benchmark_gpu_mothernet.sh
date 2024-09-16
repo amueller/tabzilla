@@ -5,17 +5,17 @@ source ../utils.sh
 
 
 # this defines DATASETS
-source ../HARD_DATASETS_BENCHMARK.sh
+source ../TABLE1_DATASETS.sh
 
-name=bench-mothernet-gpu-1000-gpu-inference
-model=mothernet-1000
+name=bench-mothernet-gpu-3000-gpu-inference-ohe-ensemble
+model=mothernet-3000
 
 
 # experiment name (will be appended to results files)
 experiment_name=$name
 
 # config file
-config_file=../../TabZilla/tabzilla_experiment_config_mothernet_gpu_subset_1000.yml
+config_file=../../TabZilla/tabzilla_experiment_config_mothernet_gpu_subset.yml
 
 # end: EXPERIMENT PARAMETERS
 ############################

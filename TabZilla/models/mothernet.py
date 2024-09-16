@@ -1,5 +1,7 @@
 from models.basemodel import BaseModel
 from mothernet.prediction import MotherNetClassifier, EnsembleMeta
+from mothernet.utils import get_mn_model
+
 import torch
 
 
@@ -16,7 +18,10 @@ class MotherNet(BaseModel):
         if args.objective == "regression":
             raise NotImplementedError("Does not support")
         elif args.objective in ["binary", "classification"]:
-            self.model = EnsembleMeta(MotherNetClassifier(device=device, inference_device=device), n_estimators=3, n_jobs=n_jobs)
+            print(f"device: {device}")
+            model_string = "mn_Dclass_average_03_25_2024_17_14_32_epoch_2910.cpkt"
+            model_path = get_mn_model(model_string)
+            self.model = EnsembleMeta(MotherNetClassifier(device=device, inference_device=device, path=model_path), n_estimators=8, n_jobs=n_jobs, onehot=True)
 
     def fit(self, X, y, X_val=None, y_val=None):
         self.model.fit(X, y)
